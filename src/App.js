@@ -1,4 +1,4 @@
-import Energia from './Energia'
+import Energia from './components/Energia'
 
 function App() {
   return (

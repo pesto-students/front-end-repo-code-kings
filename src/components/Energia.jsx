@@ -1,31 +1,31 @@
-import React, { Component } from "react";
+import React, { Component } from 'react'
 
 class Energia extends Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
-      email: "",
-      password: "",
+      email: '',
+      password: '',
       rememberMe: false,
-    };
+    }
   }
 
   handleInputChange = (event) => {
     this.setState({
       [event.target.name]: event.target.value,
-    });
-  };
+    })
+  }
 
   handleCheckboxChange = (event) => {
     this.setState({
       rememberMe: event.target.checked,
-    });
-  };
+    })
+  }
 
   handleFormSubmit = (event) => {
-    event.preventDefault();
+    event.preventDefault()
     // Handle form submission here
-  };
+  }
 
   render() {
     return (
@@ -80,8 +80,8 @@ class Energia extends Component {
           </form>
         </div>
       </div>
-    );
+    )
   }
 }
 
-export default Energia;
+export default Energia
