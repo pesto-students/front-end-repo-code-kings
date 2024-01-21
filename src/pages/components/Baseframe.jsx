@@ -8,11 +8,11 @@ const BaseFrameLayout = ({ children }) => {
 
   return (
     <div className="items-center">
-      <div className="w-0.5 h-full bg-neutral-500 hidden"></div>
-      <div className="w-full h-0.5 bg-neutral-500 absolute top-[8%]"></div>
+      <div className="w-0.5 h-full bg-neutral-500 max-sm:hidden absolute left-[25%]"></div>
+      <div className="max-sm:w-full h-0.5 bg-neutral-500 absolute top-[8%] w-[55%] lg:left-[25%]"></div>
 
-      <div className="w-full h-0.5 bg-neutral-500  fixed bottom-[8%]"></div>
-      <div className="w-0.5 h-full bg-neutral-500 absolute hidden"></div>
+      <div className="max-sm:w-full h-0.5 bg-neutral-500  fixed bottom-[8%] w-[55%] lg:left-[25%]"></div>
+      <div className="w-0.5 h-full bg-neutral-500 absolute max-sm:hidden right-[20%]"></div>
       {children}
     </div>
   )
