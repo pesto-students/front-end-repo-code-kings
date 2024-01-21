@@ -17,7 +17,7 @@ const Logo = () => {
           onClick={handleClick}
         />
       </div>
-      <div className=" mr-[2%]">
+      {/* <div className=" mr-[2%]">
         <div className="hidden">Profile Name</div>
         <div className="avatar w-[50px]  h-[50px] rounded-full  overflow-hidden border-white">
           <img
@@ -26,7 +26,7 @@ const Logo = () => {
             alt="profile logo"
           />
         </div>
-      </div>
+      </div> */}
     </div>
   )
 }
