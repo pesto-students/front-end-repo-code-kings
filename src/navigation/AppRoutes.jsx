@@ -4,6 +4,7 @@ import Exercises from '../pages/Exercises'
 import Home from '../pages/Home'
 import Profile from '../pages/Profile'
 import Settings from '../pages/Settings'
+import NewRoutine from '../pages/NewRoutine'
 
 const AppRouter = () => {
   return (
@@ -13,6 +14,7 @@ const AppRouter = () => {
         <Route path="/exercises" Component={Exercises} />
         <Route path="/profile" Component={Profile} />
         <Route path="/setting" Component={Settings} />
+        <Route path="/newRoutine" Component={NewRoutine} />
       </Routes>
     </Router>
   )
