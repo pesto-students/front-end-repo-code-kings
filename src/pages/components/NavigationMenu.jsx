@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import Logo from './Logo'
+import AvatarAndName from './AvatarAndName'
 
 const NavigationMenu = () => {
   const location = useLocation()
@@ -12,11 +13,11 @@ const NavigationMenu = () => {
 
   return (
     <div className="text-white">
-      <div className="absolute max-sm:h-full max-sm:w-full w-fit lg:top-[25%] lg:left-[5%] ">
+      <div className="absolute max-sm:h-full max-sm:w-full w-fit lg:top-[25%] lg:left-[5%] md:top-[25%] md:left-[5%] ">
         <Logo />
-        <nav className="max-sm:bottom-[1.75%] max-sm:w-full max-sm:fixed max-sm:justify-around  flex  lg:flex-col lg:gap-[30px]">
+        <nav className="max-sm:bottom-[1.75%] max-sm:w-full max-sm:fixed max-sm:justify-around  flex  md:flex-col md:gap-[30px]">
           {isHomePage ? (
-            <div className="Home lg:flex items-center text-4xl gap-3">
+            <div className="Home md:flex items-center text-2xl gap-3">
               <div>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -36,7 +37,7 @@ const NavigationMenu = () => {
               </div>
             </div>
           ) : (
-            <div className="Home  lg:flex items-center text-4xl gap-3">
+            <div className="Home  md:flex items-center text-4xl gap-3">
               <div>
                 <Link to="/">
                   <svg
@@ -59,7 +60,7 @@ const NavigationMenu = () => {
             </div>
           )}
           {isExercisesRoute ? (
-            <div className="Exercises  lg:flex items-center text-4xl gap-3">
+            <div className="Exercises  md:flex items-center text-4xl gap-3">
               <div>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -79,7 +80,7 @@ const NavigationMenu = () => {
               </div>
             </div>
           ) : (
-            <div className="Exercises  lg:flex items-center text-4xl gap-3">
+            <div className="Exercises  md:flex items-center text-4xl gap-3">
               <div>
                 <Link to="/exercises">
                   <svg
@@ -102,7 +103,7 @@ const NavigationMenu = () => {
             </div>
           )}
           {isProfileRoute ? (
-            <div className="Profile  lg:flex items-center text-4xl gap-3">
+            <div className="Profile  md:flex items-center text-4xl gap-3">
               <div>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -122,7 +123,7 @@ const NavigationMenu = () => {
               </div>
             </div>
           ) : (
-            <div className="Profile  lg:flex items-center text-4xl gap-3">
+            <div className="Profile  md:flex items-center text-4xl gap-3">
               <div>
                 <Link to="/profile">
                   <svg
@@ -145,7 +146,7 @@ const NavigationMenu = () => {
             </div>
           )}
           {isSettingsRoute ? (
-            <div className="Settings  lg:flex items-center text-4xl gap-3">
+            <div className="Settings  md:flex items-center text-4xl gap-3">
               <div>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -189,7 +190,7 @@ const NavigationMenu = () => {
               </div>
             </div>
           ) : (
-            <div className="Settings  lg:flex items-center text-4xl gap-3">
+            <div className="Settings  md:flex items-center text-4xl gap-3">
               <div>
                 <Link to="/setting">
                   <svg
@@ -237,16 +238,7 @@ const NavigationMenu = () => {
           )}
         </nav>
       </div>
-      <div className="max-sm:mr-[2%] max-sm:right-[1%] flex absolute lg:right-[21%] top-[1%] items-center w-fit gap-5">
-        <div className="max-min:hidden lg:text-2xl">Profile Name</div>
-        <div className="avatar w-[50px]  h-[50px] rounded-full  overflow-hidden border-white">
-          <img
-            src="/pimage.jpg"
-            className="h-[100%] w-[100%] object-cover"
-            alt="profile logo"
-          />
-        </div>
-      </div>
+      <AvatarAndName />
     </div>
   )
 }
