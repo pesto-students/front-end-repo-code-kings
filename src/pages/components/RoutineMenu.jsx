@@ -1,10 +1,19 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const RoutineMenu = () => {
+  const navigate = useNavigate()
+
+  const handleClick = () => {
+    navigate('/newRoutine')
+  }
   return (
     <div className="flex flex-col justify-evenly top-[20%] max-sm:left-[32%] fixed  gap-[30px]  items-center md:left-[44%]">
       <div className="text-white text-4xl font-semibold  ">Routines</div>
-      <div className="h-200 w-200 bg-neutral-600  flex flex-col justify-center items-center  cursor-pointer">
+      <div
+        className="h-200 w-200 bg-neutral-600  flex flex-col justify-center items-center  cursor-pointer"
+        onClick={handleClick}
+      >
         <div className="relative w-16 h-16">
           <svg
             xmlns="http://www.w3.org/2000/svg"
