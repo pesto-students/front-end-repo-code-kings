@@ -17,7 +17,7 @@ const NavigationMenu = () => {
         <Logo />
         <nav className="max-sm:bottom-[1.75%] max-sm:w-full max-sm:fixed max-sm:justify-around  flex  md:flex-col md:gap-[30px]">
           {isHomePage ? (
-            <div className="Home md:flex items-center text-2xl gap-3">
+            <div className="Home md:flex items-center md:text-2xl lg:text-4xl gap-3">
               <div>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -37,7 +37,7 @@ const NavigationMenu = () => {
               </div>
             </div>
           ) : (
-            <div className="Home  md:flex items-center text-4xl gap-3">
+            <div className="Home  md:flex items-center md:text-2xl lg:text-4xl gap-3">
               <div>
                 <Link to="/">
                   <svg
@@ -60,7 +60,7 @@ const NavigationMenu = () => {
             </div>
           )}
           {isExercisesRoute ? (
-            <div className="Exercises  md:flex items-center text-4xl gap-3">
+            <div className="Exercises  md:flex items-center md:text-2xl lg:text-4xl gap-3">
               <div>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -80,7 +80,7 @@ const NavigationMenu = () => {
               </div>
             </div>
           ) : (
-            <div className="Exercises  md:flex items-center text-4xl gap-3">
+            <div className="Exercises  md:flex items-center md:text-2xl lg:text-4xl gap-3">
               <div>
                 <Link to="/exercises">
                   <svg
@@ -103,7 +103,7 @@ const NavigationMenu = () => {
             </div>
           )}
           {isProfileRoute ? (
-            <div className="Profile  md:flex items-center text-4xl gap-3">
+            <div className="Profile  md:flex items-center md:text-2xl lg:text-4xl gap-3">
               <div>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -123,7 +123,7 @@ const NavigationMenu = () => {
               </div>
             </div>
           ) : (
-            <div className="Profile  md:flex items-center text-4xl gap-3">
+            <div className="Profile  md:flex items-center md:text-2xl lg:text-4xl gap-3">
               <div>
                 <Link to="/profile">
                   <svg
@@ -146,7 +146,7 @@ const NavigationMenu = () => {
             </div>
           )}
           {isSettingsRoute ? (
-            <div className="Settings  md:flex items-center text-4xl gap-3">
+            <div className="Settings  md:flex items-center md:text-2xl lg:text-4xl gap-3">
               <div>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -190,7 +190,7 @@ const NavigationMenu = () => {
               </div>
             </div>
           ) : (
-            <div className="Settings  md:flex items-center text-4xl gap-3">
+            <div className="Settings  md:flex items-center md:text-2xl lg:text-4xl gap-3">
               <div>
                 <Link to="/setting">
                   <svg
