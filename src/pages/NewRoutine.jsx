@@ -8,7 +8,7 @@ const NewRoutine = () => {
   const navigate = useNavigate()
 
   const handleClick = () => {
-    navigate('/newRoutine/addExercise')
+    navigate('/newRoutine/addExercises')
   }
   return (
     <BaseFrameLayout>
