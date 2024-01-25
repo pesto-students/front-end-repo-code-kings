@@ -7,6 +7,8 @@ const AvatarAndName = () => {
   const location = useLocation()
 
   const isNewRoutineRoute = location.pathname === '/newRoutine'
+  const isNewRoutineWithExerciseRoute =
+    location.pathname === '/newRoutine/addExercises'
 
   const handleClick = () => {
     navigate('/profile')
@@ -14,7 +16,7 @@ const AvatarAndName = () => {
 
   return (
     <>
-      {isNewRoutineRoute ? (
+      {isNewRoutineRoute || isNewRoutineWithExerciseRoute ? (
         <div
           className="max-sm:mr-[2%] max-sm:right-[1%] flex absolute md:right-[41%] top-[1%] items-center w-fit gap-5 cursor-pointer"
           onClick={handleClick}
