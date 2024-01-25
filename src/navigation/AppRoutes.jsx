@@ -5,6 +5,7 @@ import Home from '../pages/Home'
 import Profile from '../pages/Profile'
 import Settings from '../pages/Settings'
 import NewRoutine from '../pages/NewRoutine'
+import NewRoutineWithExerciseList from '../pages/NewRoutineWithExerciseList'
 
 const AppRouter = () => {
   return (
@@ -15,6 +16,10 @@ const AppRouter = () => {
         <Route path="/profile" Component={Profile} />
         <Route path="/setting" Component={Settings} />
         <Route path="/newRoutine" Component={NewRoutine} />
+        <Route
+          path="/newRoutine/addExercises"
+          Component={NewRoutineWithExerciseList}
+        />
       </Routes>
     </Router>
   )
