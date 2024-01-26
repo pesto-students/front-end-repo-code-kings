@@ -8,13 +8,14 @@ const RoutineMenu = () => {
   const isNewRoutineRoute = location.pathname === '/newRoutine'
   const isNewRoutineWithExerciseRoute =
     location.pathname === '/newRoutine/addExercises'
+  const isSaveRoutine = location.pathname === '/newRoutine/saveRoutine'
 
   const handleClick = () => {
     navigate('/newRoutine')
   }
   return (
     <>
-      {isNewRoutineRoute || isNewRoutineWithExerciseRoute ? (
+      {isNewRoutineRoute || isNewRoutineWithExerciseRoute || isSaveRoutine ? (
         <div className="flex flex-col justify-evenly top-[20%] max-sm:left-[32%] fixed  gap-[30px]  items-center md:left-[35%]">
           <div className="text-white text-4xl font-semibold  ">Routines</div>
           <div

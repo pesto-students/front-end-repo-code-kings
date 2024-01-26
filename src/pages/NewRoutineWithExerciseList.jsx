@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import BaseFrameLayout from './components/Baseframe'
 import NavigationMenu from './components/NavigationMenu'
 import RoutineMenu from './components/RoutineMenu'
@@ -7,10 +8,16 @@ import ExerciseBlock from './components/ExerciseBlock'
 
 const NewRoutineWithExerciseList = () => {
   const [isItemSelected, setSelectedItem] = useState(null)
+  const navigate = useNavigate()
 
   const handleIsItemSelected = (data) => {
     setSelectedItem(data)
   }
+
+  const handleClick = () => {
+    navigate('/newRoutine/saveRoutine')
+  }
+
   return (
     <BaseFrameLayout>
       <NavigationMenu />
@@ -35,7 +42,10 @@ const NewRoutineWithExerciseList = () => {
         </div>
         {!isItemSelected && (
           <div className="w-[90%]">
-            <button className="bg-blue-500 text-xl h-[45px] w-full">
+            <button
+              className="bg-blue-500 text-xl h-[45px] w-full"
+              onClick={handleClick}
+            >
               Add Exercises
             </button>
           </div>
