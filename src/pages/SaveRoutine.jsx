@@ -1,9 +1,15 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import BaseFrameLayout from './components/Baseframe'
 import NavigationMenu from './components/NavigationMenu'
 import RoutineMenu from './components/RoutineMenu'
 
 const SaveRoutine = () => {
+  const navigate = useNavigate()
+  const handleClick = () => {
+    navigate('/home')
+  }
+
   return (
     <BaseFrameLayout>
       <NavigationMenu />
@@ -69,7 +75,10 @@ const SaveRoutine = () => {
           <button className="bg-blue-500 w-[90%] text-xl h-[45px] mt-[2%]">
             + Add Exercises
           </button>
-          <button className="bg-neutral-600  w-[90%] text-xl h-[45px] mt-[2%]">
+          <button
+            className="bg-neutral-600  w-[90%] text-xl h-[45px] mt-[2%]"
+            onClick={handleClick}
+          >
             Save
           </button>
         </div>

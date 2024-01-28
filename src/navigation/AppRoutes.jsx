@@ -7,6 +7,7 @@ import Settings from '../pages/Settings'
 import NewRoutine from '../pages/NewRoutine'
 import NewRoutineWithExerciseList from '../pages/NewRoutineWithExerciseList'
 import SaveRoutine from '../pages/SaveRoutine'
+import HomeWithRoutines from '../pages/HomeWithRoutines'
 
 const AppRouter = () => {
   return (
@@ -22,6 +23,7 @@ const AppRouter = () => {
           Component={NewRoutineWithExerciseList}
         />
         <Route path="/newRoutine/saveRoutine" Component={SaveRoutine} />
+        <Route path="/home" Component={HomeWithRoutines} />
       </Routes>
     </Router>
   )
