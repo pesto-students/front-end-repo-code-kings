@@ -123,12 +123,6 @@ const RoutineBlock = () => {
           </div>
         </div>
       )}
-      {/* {overLayVisible && (
-        <div
-          className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-75 z-10 flex justify-center items-center"
-          onClick={handleClickOutside}
-        ></div>
-      )} */}
       <OverlayFrame onClose={handleClickOutside} visible={overLayVisible}>
         <div className="bg-neutral-900 w-[40%] h-[70%] text-white text-center z-10">
           <div className="flex justify-between items-center mt-[2%]">
