@@ -22,7 +22,7 @@ const AppRouter = () => {
         <Route path="/" Component={Home} />
         <Route path="/exercises" Component={Exercises} />
         <Route path="/profile" Component={Profile} />
-        <Route path="/setting" Component={Settings} />
+        {/* <Route path="/setting" Component={Settings} /> */}
         <Route path="/newRoutine" Component={NewRoutine} />
         <Route path="/newRoutine/addExercises" Component={AddExercise} />
         <Route path="/newRoutine/saveRoutine" Component={SaveRoutine} />

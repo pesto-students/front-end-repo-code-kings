@@ -123,7 +123,7 @@ const SettingPage = () => {
           <img
             className="absolute h-full w-full top-[0%] left-[0%] max-w-full overflow-hidden max-h-full [transform:_rotate(-0.02deg)]"
             alt="Energía Logo"
-            src="/Energia.png" // Replace with the actual path to your logo
+            src="/Energia.png"
           />
         </div>
       </div>

@@ -85,8 +85,8 @@ const NavigationMenu = () => {
                 <Link to="/exercises">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    width="50"
-                    height="25"
+                    width="47"
+                    height="22"
                     viewBox="0 0 50 25"
                     fill="none"
                   >

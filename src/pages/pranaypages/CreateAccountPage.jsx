@@ -12,8 +12,6 @@ const CreateAccountPage = () => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
     if (!emailRegex.test(email)) formErrors.email = 'Invalid email'
 
-    // Add more validation logic for password if needed
-
     setErrors(formErrors)
   }
 
