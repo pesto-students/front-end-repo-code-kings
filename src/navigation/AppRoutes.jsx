@@ -12,7 +12,7 @@ import Settings from '../pages/Settings'
 import SignInPage from '../pages/pranaypages/SignInPage'
 import ForgotPasswordPage from '../pages/pranaypages/ForgotPasswordPage'
 import CreateAccountPage from '../pages/pranaypages/CreateAccountPage'
-import SettingPage from '../pages/pranaypages/SettingPage'
+import SettingPage from '../pages/SettingPage'
 import EditProfile from '../pages/pranaypages/EditProfile'
 
 const AppRouter = () => {
@@ -22,17 +22,17 @@ const AppRouter = () => {
         <Route path="/" Component={Home} />
         <Route path="/exercises" Component={Exercises} />
         <Route path="/profile" Component={Profile} />
-        <Route path="/setting" Component={Settings} />
+        {/* <Route path="/setting" Component={Settings} /> */}
         <Route path="/newRoutine" Component={NewRoutine} />
         <Route path="/newRoutine/addExercises" Component={AddExercise} />
         <Route path="/newRoutine/saveRoutine" Component={SaveRoutine} />
         <Route path="/home" Component={HomeWithRoutines} />
         <Route path="/routine/edit" Component={EditRoutine} />
-        <Route path="/signin" element={SignInPage} />
-        <Route path="/forgot-password" element={ForgotPasswordPage} />
-        <Route path="/create-account" element={CreateAccountPage} />
-        <Route path="/setting" element={SettingPage} />
-        <Route path="/editprofile" element={EditProfile} />
+        <Route path="/signin" element={<SignInPage />} />
+        <Route path="/forgot-password" element={<ForgotPasswordPage />} />
+        <Route path="/create-account" element={<CreateAccountPage />} />
+        <Route path="/setting" element={<SettingPage />} />
+        <Route path="/editprofile" element={<EditProfile />} />
       </Routes>
     </Router>
   )
