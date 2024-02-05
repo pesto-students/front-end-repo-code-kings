@@ -12,7 +12,7 @@ import Settings from '../pages/Settings'
 import SignInPage from '../pages/pranaypages/SignInPage'
 import ForgotPasswordPage from '../pages/pranaypages/ForgotPasswordPage'
 import CreateAccountPage from '../pages/pranaypages/CreateAccountPage'
-import SettingPage from '../pages/pranaypages/SettingPage'
+import SettingPage from '../pages/SettingPage'
 import EditProfile from '../pages/pranaypages/EditProfile'
 
 const AppRouter = () => {

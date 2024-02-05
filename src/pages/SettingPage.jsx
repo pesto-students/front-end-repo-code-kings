@@ -6,19 +6,21 @@ const SettingPage = () => {
 
   const onHomeContainerClick = useCallback(() => {
     // Please sync "home page" to the project
-  }, [])
+    navigate('/home')
+  }, [navigate])
 
   const onExercisesContainerClick = useCallback(() => {
     // Please sync "exercises page" to the project
-  }, [])
+    navigate('/exercises')
+  }, [navigate])
 
   const onProfileContainerClick = useCallback(() => {
     navigate('/profile') // Please sync "profile page" to the project
-  }, [])
+  }, [navigate])
 
   const onEditProfileContainerClick = useCallback(() => {
     navigate('/editprofile') // Please sync "profile page" to the project
-  }, [])
+  }, [navigate])
 
   const onSettingsContainerClick = useCallback(() => {
     navigate('/setting')
@@ -26,19 +28,19 @@ const SettingPage = () => {
 
   const onEnergaLogoContainerClick = useCallback(() => {
     // Please sync "home page" to the project
-  }, [])
+  }, [navigate])
 
   const onRightArrow1Click = useCallback(() => {
     navigate('/editprofile') // Please sync "edit profilepage" to the project
-  }, [])
+  }, [navigate])
 
   const onRightArrow2Click = useCallback(() => {
     navigate('/account') // Please sync "edit account" to the project
-  }, [])
+  }, [navigate])
 
   const onRightArrow3Click = useCallback(() => {
     navigate('/routine-help') // Please sync "routine-help" to the project
-  }, [])
+  }, [navigate])
 
   const onRoutineHelpClick = useCallback(() => {
     navigate('/routine-help') // Update the path to your routine help page
