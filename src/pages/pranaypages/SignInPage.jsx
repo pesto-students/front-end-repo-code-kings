@@ -115,7 +115,7 @@ const SignInPage = () => {
             Sign In
           </button>
           <div className="ml-auto ">
-            <Link to="/create-account" className="text-blue-500  ml-40">
+            <Link to="/signup" className="text-blue-500  ml-40">
               Create account?
             </Link>
           </div>

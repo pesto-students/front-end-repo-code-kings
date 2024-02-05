@@ -30,7 +30,7 @@ const AppRouter = () => {
         <Route path="/routine/edit" Component={EditRoutine} />
         <Route path="/signin" element={<SignInPage />} />
         <Route path="/forgot-password" element={<ForgotPasswordPage />} />
-        <Route path="/create-account" element={<CreateAccountPage />} />
+        <Route path="/signup" element={<CreateAccountPage />} />
         <Route path="/setting" element={<SettingPage />} />
         <Route path="/editprofile" element={<EditProfile />} />
       </Routes>
