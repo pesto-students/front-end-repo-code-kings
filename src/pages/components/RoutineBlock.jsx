@@ -54,7 +54,8 @@ const RoutineBlock = () => {
     stopClock()
   }
 
-  const handleCheckIcon = () => {
+  const handleCheckIcon = (e) => {
+    e.stopPropagation()
     setIcon(true)
   }
 
