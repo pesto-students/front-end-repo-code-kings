@@ -1,29 +1,29 @@
-import React, { useState } from "react";
+import React, { useState } from 'react'
 
 const CreateAccountPage = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [errors, setErrors] = useState({});
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [errors, setErrors] = useState({})
 
   const validateForm = () => {
-    let formErrors = {};
+    let formErrors = {}
 
     // Email format validation
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) formErrors.email = "Invalid email";
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    if (!emailRegex.test(email)) formErrors.email = 'Invalid email'
 
     // Add more validation logic for password if needed
 
-    setErrors(formErrors);
-  };
+    setErrors(formErrors)
+  }
 
   const handleSubmit = (event) => {
-    event.preventDefault();
-    validateForm();
+    event.preventDefault()
+    validateForm()
     if (Object.keys(errors).length === 0) {
       // Handle form submission here
     }
-  };
+  }
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-black text-white">
@@ -34,7 +34,6 @@ const CreateAccountPage = () => {
       />
 
       <div className="p-8 text-center">
-        
         <p className="mb-6 tracking-wide font-bold text-2xl text-white-400">
           Elevate Your Fitness Journey with Energía
         </p>
@@ -60,9 +59,8 @@ const CreateAccountPage = () => {
             />
           </div>
           <p className="text-xs text-white-400 mb-4">
-            <p>By clicking Agree & Join, you agree to the LinkedIn</p> 
-            User Agreement,
-            Privacy Policy, and Cookie Policy.
+            <p>By clicking Agree & Join, you agree to the LinkedIn</p>
+            User Agreement, Privacy Policy, and Cookie Policy.
           </p>
           <button
             className="w-60 py-2  bg-blue-500 text-white mb-4"
@@ -79,7 +77,7 @@ const CreateAccountPage = () => {
         className="absolute bottom-0 w-full h-auto"
       />
     </div>
-  );
-};
+  )
+}
 
-export default CreateAccountPage;
+export default CreateAccountPage

@@ -9,6 +9,11 @@ import NewRoutine from '../pages/NewRoutine'
 import Profile from '../pages/Profile'
 import SaveRoutine from '../pages/SaveRoutine'
 import Settings from '../pages/Settings'
+import SignInPage from '../pages/pranaypages/SignInPage'
+import ForgotPasswordPage from '../pages/pranaypages/ForgotPasswordPage'
+import CreateAccountPage from '../pages/pranaypages/CreateAccountPage'
+import SettingPage from '../pages/pranaypages/SettingPage'
+import EditProfile from '../pages/pranaypages/EditProfile'
 
 const AppRouter = () => {
   return (
@@ -23,6 +28,11 @@ const AppRouter = () => {
         <Route path="/newRoutine/saveRoutine" Component={SaveRoutine} />
         <Route path="/home" Component={HomeWithRoutines} />
         <Route path="/routine/edit" Component={EditRoutine} />
+        <Route path="/signin" element={SignInPage} />
+        <Route path="/forgot-password" element={ForgotPasswordPage} />
+        <Route path="/create-account" element={CreateAccountPage} />
+        <Route path="/setting" element={SettingPage} />
+        <Route path="/editprofile" element={EditProfile} />
       </Routes>
     </Router>
   )
