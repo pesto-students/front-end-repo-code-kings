@@ -4,10 +4,11 @@ import BaseFrameLayout from './components/Baseframe'
 import NavigationMenu from './components/NavigationMenu'
 import RoutineMenu from './components/RoutineMenu'
 
-const SaveRoutine = () => {
+const AddExercise = () => {
   const navigate = useNavigate()
+
   const handleClick = () => {
-    navigate('/home')
+    navigate('/newRoutine/saveRoutine')
   }
 
   return (
@@ -16,22 +17,19 @@ const SaveRoutine = () => {
       <RoutineMenu />
       <div className="new-routine text-white ml-[60%]  text-center">
         <h1 className="text-2xl font-semibold leading-[20px] pt-[4.5%] text-center">
-          Save Routine
+          Add Exercise
         </h1>
         <div className="h-0.5 bg-neutral-500 fixed top-[8%]  w-full"></div>
       </div>
       <div className=" text-white ml-[60%] mt-[4%] pt-[0.5%] text-center flex flex-col items-center gap-10 overflow-hidden">
-        <input
-          type="text"
-          value=""
-          placeholder="Routine Name"
-          className="bg-transparent border-neutral-700 border-2 text-neutral-400 w-[90%] pl-3 text-2xl"
-        />
-        <div className="w-[90%] no-scrollbar overflow-y-auto text-center flex flex-col gap-8 pl-[5%]">
-          <div className=" w-[90%] text-left items-center ">
-            <div className=" font-[500] text-xl">Exercise Name</div>
-          </div>
-          <div className="text-neutral-300 text-center flex gap-11 ">
+        <div className="w-[90%] no-scrollbar overflow-y-auto text-center flex flex-col gap-8">
+          <input
+            type="text"
+            value=""
+            placeholder="Exercise Name"
+            className="bg-transparent border-neutral-700 border-2 text-neutral-400 w-[90%] pl-3 text-2xl"
+          />
+          <div className="text-neutral-300 text-center flex gap-11 pl-[5%]">
             <div className="w-fit">
               <div>SET</div>
               <input
@@ -65,14 +63,11 @@ const SaveRoutine = () => {
           <button className="bg-neutral-600  w-[90%] text-xl h-[45px] ">
             + Add Set
           </button>
-          <button className="bg-blue-500 w-[90%] text-xl h-[45px] mt-[2%]">
-            + Add Exercises
-          </button>
           <button
-            className="bg-neutral-600  w-[90%] text-xl h-[45px] mt-[2%]"
+            className="bg-blue-500 w-[90%] text-xl h-[45px] mt-[2%]"
             onClick={handleClick}
           >
-            Save
+            + Add Exercises
           </button>
         </div>
       </div>
@@ -80,4 +75,4 @@ const SaveRoutine = () => {
   )
 }
 
-export default SaveRoutine
+export default AddExercise
