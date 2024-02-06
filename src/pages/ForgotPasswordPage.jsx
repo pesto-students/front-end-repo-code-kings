@@ -6,45 +6,30 @@ const ForgotPasswordPage = () => {
   const [email, setEmail] = useState('')
   const [newPassword, setNewPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
-  const [errors, setErrors] = useState({})
+  const [errorMessage, setErrorMessage] = useState('')
   const navigate = useNavigate()
 
-  const validateForm = () => {
-    let formErrors = {}
-
-    // Email format validation
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-    if (!emailRegex.test(email)) formErrors.email = 'Invalid email'
-
-    setErrors(formErrors)
-  }
-
-  const handleSubmit = async (event) => {
-    event.preventDefault()
-    validateForm()
+  const handleChangePassword = async () => {
+    if (newPassword !== confirmPassword) {
+      setErrorMessage("Passwords don't match")
+      return
+    }
 
     try {
-      if (Object.keys(errors).length === 0) {
-        const response = await axios.post('/your-api-endpoint', {
+      const response = await axios.post(
+        'http://localhost:3000/api/v1/users/forgotPassword',
+        {
           email: email,
-          newPassword: newPassword,
-          confirmPassword: confirmPassword,
-        })
-
-        console.log(response.data)
-        // Clear the form
-        setEmail('')
-        setNewPassword('')
-        setConfirmPassword('')
-        navigate('/signin')
-      }
+          password: newPassword,
+          passwordConfirm: confirmPassword,
+        },
+      )
+      console.log(response.data)
+      navigate('/signin')
     } catch (error) {
-      console.error('Error:', error)
+      console.error(error)
+      setErrorMessage(error.response.data.message)
     }
-  }
-
-  const onChangePasswordClick = () => {
-    navigate('/signin')
   }
 
   return (
@@ -58,43 +43,40 @@ const ForgotPasswordPage = () => {
       <div className="p-8 text-center">
         <h2 className="text-5xl mb-8">Forgot Password</h2>
 
-        <form onSubmit={handleSubmit}>
-          <div className="mb-4">
-            <input
-              className="w-60 p-2 mb-2 bg-gray-700 text-white"
-              type="email"
-              placeholder="Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            {errors.email && <p className="text-red-500">{errors.email}</p>}
-          </div>
-          <div className="mb-4">
-            <input
-              className="w-60 p-2 mb-2 bg-gray-700 text-white"
-              type="password"
-              placeholder="New Password"
-              value={newPassword}
-              onChange={(e) => setNewPassword(e.target.value)}
-            />
-          </div>
-          <div className="mb-4">
-            <input
-              className="w-60 p-2 mb-2 bg-gray-700 text-white"
-              type="password"
-              placeholder="Confirm Password"
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-            />
-          </div>
-          <button
-            className="w-60 py-2 rounded bg-blue-500 text-white mb-2"
-            disabled={!email || !newPassword || !confirmPassword}
-            onClick={onChangePasswordClick}
-          >
-            Change Password
-          </button>
-        </form>
+        <div className="mb-4">
+          <input
+            className="w-60 p-2 mb-2 bg-gray-700 text-white"
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </div>
+        <div className="mb-4">
+          <input
+            className="w-60 p-2 mb-2 bg-gray-700 text-white"
+            type="password"
+            placeholder="New Password"
+            value={newPassword}
+            onChange={(e) => setNewPassword(e.target.value)}
+          />
+        </div>
+        <div className="mb-4">
+          <input
+            className="w-60 p-2 mb-2 bg-gray-700 text-white"
+            type="password"
+            placeholder="Confirm Password"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+          />
+        </div>
+        {errorMessage && <p className="text-red-500">{errorMessage}</p>}
+        <button
+          className="w-60 py-2 rounded bg-blue-500 text-white mb-2"
+          onClick={handleChangePassword}
+        >
+          Change Password
+        </button>
       </div>
 
       <img

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import RoutineMenu from './components/RoutineMenu'
 import NavigationMenu from './components/NavigationMenu'
@@ -7,6 +7,14 @@ import BaseFrameLayout from './components/Baseframe'
 const NewRoutine = () => {
   const navigate = useNavigate()
 
+  useEffect(() => {
+    if (
+      localStorage.getItem('isLogin') === null ||
+      localStorage.getItem('isLogin') === undefined
+    ) {
+      navigate('/signin')
+    }
+  }, [])
   const handleClick = () => {
     navigate('/newRoutine/addExercises')
   }

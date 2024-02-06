@@ -238,7 +238,7 @@ const NavigationMenu = () => {
           )}
         </nav>
       </div>
-      <AvatarAndName />
+      {localStorage.getItem('isLogin') === true && <AvatarAndName />}
     </div>
   )
 }
