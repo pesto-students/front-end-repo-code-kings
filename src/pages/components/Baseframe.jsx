@@ -1,5 +1,15 @@
 import React from 'react'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useParams } from 'react-router-dom'
+
+export const useBasePath = () => {
+  const location = useLocation()
+  const params = useParams()
+
+  return Object.entries(params).reduce(
+    (path, [key, value]) => path.replace('/' + value, '/:' + key),
+    location.pathname,
+  )
+}
 
 const BaseFrameLayout = ({ children }) => {
   const location = useLocation()
@@ -7,8 +17,8 @@ const BaseFrameLayout = ({ children }) => {
   const isExercisesRoute = location.pathname === '/exercises'
   const isNewRoutineRoute = location.pathname === '/newRoutine'
   const isNewRoutineWithExerciseRoute =
-    location.pathname === '/newRoutine/addExercises'
-  const isSaveRoutine = location.pathname === '/newRoutine/saveRoutine'
+    useBasePath() === '/routine/:id/add-exercises'
+  const isSaveRoutine = useBasePath() === `/routine/:id/save-routine`
   const isHomeWithRoutineRoute = location.pathname === '/home'
   const isEditRoutine = location.pathname === '/routine/edit'
 

@@ -18,19 +18,18 @@ const AppRouter = () => {
   return (
     <Router>
       <Routes>
+        <Route path="/signup" element={<CreateAccountPage />} />
+        <Route path="/signin" element={<SignInPage />} />
+        <Route path="/forgot-password" element={<ForgotPasswordPage />} />
         <Route path="/" Component={Home} />
+        <Route path="/home" Component={HomeWithRoutines} />
         <Route path="/exercises" Component={Exercises} />
         <Route path="/profile" Component={Profile} />
         <Route path="/setting" Component={Settings} />
         <Route path="/newRoutine" Component={NewRoutine} />
-        <Route path="/newRoutine/addExercises" Component={AddExercise} />
-        <Route path="/newRoutine/saveRoutine" Component={SaveRoutine} />
-        <Route path="/home" Component={HomeWithRoutines} />
+        <Route path="/routine/:id/add-exercises" Component={AddExercise} />
+        <Route path="/routine/:id/save-routine" Component={SaveRoutine} />
         <Route path="/routine/edit" Component={EditRoutine} />
-        <Route path="/signin" element={<SignInPage />} />
-        <Route path="/forgot-password" element={<ForgotPasswordPage />} />
-        <Route path="/signup" element={<CreateAccountPage />} />
-        {/* <Route path="/setting" element={<SettingPage />} /> */}
         <Route path="/editprofile" element={<EditProfile />} />
       </Routes>
     </Router>

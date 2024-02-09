@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
-import { Cookies } from 'react-cookie'
+import React, { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 
 const SignInPage = () => {
   const [email, setEmail] = useState('')
@@ -10,7 +9,6 @@ const SignInPage = () => {
   const [errorMessage, setErrorMessage] = useState('')
   const navigate = useNavigate()
 
-  const cookie = new Cookies()
   const handleSignIn = async () => {
     try {
       const response = await axios.post(

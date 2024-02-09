@@ -28,7 +28,6 @@ const CreateAccountPage = () => {
           passwordConfirm: confirmPassword,
         },
       )
-      const cookie = new Cookies()
       console.log(response.data)
       navigate('/signin')
     } catch (error) {

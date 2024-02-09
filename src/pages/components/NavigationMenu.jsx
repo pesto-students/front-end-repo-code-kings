@@ -1,11 +1,12 @@
 import React from 'react'
+import { Cookies } from 'react-cookie'
 import { Link, useLocation } from 'react-router-dom'
 import Logo from './Logo'
-import AvatarAndName from './AvatarAndName'
 
 const NavigationMenu = () => {
   const location = useLocation()
-
+  const cookie = new Cookies()
+  const token = cookie.get('jwt')
   const isHomePage = location.pathname === '/'
   const isExercisesRoute = location.pathname === '/exercises'
   const isProfileRoute = location.pathname === '/profile'
@@ -238,7 +239,7 @@ const NavigationMenu = () => {
           )}
         </nav>
       </div>
-      {localStorage.getItem('isLogin') === true && <AvatarAndName />}
+      {/* {token && <AvatarAndName />} */}
     </div>
   )
 }

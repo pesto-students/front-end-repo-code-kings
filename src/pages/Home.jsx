@@ -3,20 +3,17 @@ import BaseFrameLayout from './components/Baseframe'
 import NavigationMenu from './components/NavigationMenu'
 import RoutineMenu from './components/RoutineMenu'
 import { useNavigate } from 'react-router-dom'
+import { Cookies } from 'react-cookie'
 
 const Home = () => {
   const navigate = useNavigate()
   const [isLogin, setIsLogin] = useState(true)
-
+  const cookie = new Cookies()
   useEffect(() => {
-    if (
-      localStorage.getItem('isLogin') === null ||
-      localStorage.getItem('isLogin') === undefined ||
-      localStorage.getItem('isLogin') === false
-    ) {
-      setIsLogin(false)
-    } else {
+    if (cookie.get('jwt')) {
       setIsLogin(true)
+    } else {
+      setIsLogin(false)
     }
   }, [])
 

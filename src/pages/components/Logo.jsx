@@ -1,11 +1,14 @@
 import React from 'react'
+import { Cookies } from 'react-cookie'
 import { useNavigate } from 'react-router-dom'
 
 const Logo = () => {
   const navigate = useNavigate()
-
+  const cookie = new Cookies()
   const handleClick = () => {
-    navigate('/')
+    cookie.remove('jwt')
+    // document.cookie = 'jwt=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'
+    navigate('/signin')
   }
   return (
     <div className="w-full h-[8%] max-sm:absolute text-white max-sm:flex max-sm:justify-between items-center">
