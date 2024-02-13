@@ -1,5 +1,5 @@
 import React from 'react'
-import { useNavigate, useLocation, useParams } from 'react-router-dom'
+import { useLocation, useNavigate, useParams } from 'react-router-dom'
 
 export const useBasePath = () => {
   const location = useLocation()
@@ -13,14 +13,13 @@ export const useBasePath = () => {
 
 const AvatarAndName = () => {
   const navigate = useNavigate()
-
   const location = useLocation()
 
   const isNewRoutineRoute = location.pathname === '/newRoutine'
   const isNewRoutineWithExerciseRoute =
     useBasePath() === `/routine/:id/add-exercises`
   const isSaveRoutine = useBasePath() === `/routine/:id/save-routine`
-  const isEditRoutine = location.pathname === '/routine/edit'
+  const isEditRoutine = useBasePath() === '/routine/:id/edit'
 
   const handleClick = () => {
     navigate('/profile')
@@ -61,7 +60,7 @@ const AvatarAndName = () => {
           className="max-sm:mr-[2%] max-sm:right-[1%] flex absolute md:right-[21%] top-[1%] items-center w-fit gap-5 cursor-pointer"
           onClick={handleClick}
         >
-          <div className="max-min:hidden lg:text-2xl">Profile Name</div>
+          <div className="max-min:hidden lg:text-2xl">Profile name</div>
           <div className="avatar w-[50px]  h-[50px] rounded-full  overflow-hidden border-white">
             <img
               src="/pimage.jpg"

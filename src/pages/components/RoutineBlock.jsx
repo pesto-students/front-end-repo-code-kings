@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import OverlayFrame from './OverlayFrame'
 
-const RoutineBlock = () => {
+const RoutineBlock = ({ routine }) => {
   const navigate = useNavigate()
 
   const [subMenuVisible, setSebMenuVisible] = useState(false)
@@ -39,7 +39,7 @@ const RoutineBlock = () => {
   }
 
   const handleEditClick = () => {
-    navigate('/routine/edit')
+    navigate(`/routine/${routine._id}/edit`)
   }
 
   const handleStartRoutineClick = () => {
@@ -58,6 +58,10 @@ const RoutineBlock = () => {
     e.stopPropagation()
     setIcon(true)
   }
+
+  const exerciseNames = routine.exercises
+    .map((exercise) => exercise.name)
+    .join(',')
 
   useEffect(() => {
     let intervalId
@@ -78,7 +82,7 @@ const RoutineBlock = () => {
       <div className="bg-neutral-600 items-center text-center h-32 mb-5 ">
         <div className="flex items-center justify-between">
           <div className="text-xl font-semibold capitalize pl-4 pt-3">
-            Routine Name
+            {routine.name}
           </div>
           <div className="pr-6 cursor-pointer" onClick={handleIconClick}>
             <svg
@@ -96,7 +100,7 @@ const RoutineBlock = () => {
           </div>
         </div>
         <div className="font-light text-xs h-fit pl-4 pt-1 text-left">
-          Jorem ipsum dolor sit amet, (Exercise name) adipiscing elit.
+          {exerciseNames}
         </div>
         <button
           className="bg-blue-500 w-[90%] text-xl h-[30px] mt-[4%]"

@@ -1,6 +1,7 @@
 import React from 'react'
 import { Cookies } from 'react-cookie'
 import { Link, useLocation } from 'react-router-dom'
+import AvatarAndName from './AvatarAndName'
 import Logo from './Logo'
 
 const NavigationMenu = () => {
@@ -239,7 +240,7 @@ const NavigationMenu = () => {
           )}
         </nav>
       </div>
-      {/* {token && <AvatarAndName />} */}
+      {token && <AvatarAndName />}
     </div>
   )
 }
