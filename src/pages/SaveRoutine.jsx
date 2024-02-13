@@ -27,9 +27,9 @@ const SaveRoutine = () => {
             },
           },
         )
-        setExercises(response.data.data.data.excercises)
+        setExercises(response.data.data.data.exercises)
         setRoutineName(response.data.data.data.name)
-        // console.log(response.data.data.data)
+        console.log(response.data.data.data)
       } catch (error) {
         setError('Failed to fetch routine.')
       }
@@ -45,7 +45,7 @@ const SaveRoutine = () => {
     exercises.map(async (exercise) => {
       try {
         await axios.patch(
-          `http://localhost:3000/api/v1/excercises/${exercise._id}`,
+          `http://localhost:3000/api/v1/exercises/${exercise._id}`,
           {
             name: exercise.name,
             sets: exercise.sets,

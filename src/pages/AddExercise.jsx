@@ -27,7 +27,7 @@ const AddExercise = () => {
 
     try {
       const response = await axios.post(
-        `http://localhost:3000/api/v1/routines/${routineId}/excercises`,
+        `http://localhost:3000/api/v1/routines/${routineId}/exercises`,
         {
           name: exerciseName,
           sets: sets,
