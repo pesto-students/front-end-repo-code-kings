@@ -10,6 +10,11 @@ const ForgotPasswordPage = () => {
   const navigate = useNavigate()
 
   const handleChangePassword = async () => {
+    if (!email || !newPassword || !confirmPassword) {
+      setErrorMessage('Please provide valid information')
+      return
+    }
+
     if (newPassword !== confirmPassword) {
       setErrorMessage("Passwords don't match")
       return
@@ -49,7 +54,10 @@ const ForgotPasswordPage = () => {
             type="email"
             placeholder="Email"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) => {
+              setEmail(e.target.value)
+              setErrorMessage('')
+            }}
           />
         </div>
         <div className="mb-4">
@@ -58,7 +66,10 @@ const ForgotPasswordPage = () => {
             type="password"
             placeholder="New Password"
             value={newPassword}
-            onChange={(e) => setNewPassword(e.target.value)}
+            onChange={(e) => {
+              setNewPassword(e.target.value)
+              setErrorMessage('')
+            }}
           />
         </div>
         <div className="mb-4">
@@ -67,7 +78,10 @@ const ForgotPasswordPage = () => {
             type="password"
             placeholder="Confirm Password"
             value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
+            onChange={(e) => {
+              setConfirmPassword(e.target.value)
+              setErrorMessage('')
+            }}
           />
         </div>
         {errorMessage && <p className="text-red-500">{errorMessage}</p>}

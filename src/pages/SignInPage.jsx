@@ -10,6 +10,11 @@ const SignInPage = () => {
   const navigate = useNavigate()
 
   const handleSignIn = async () => {
+    if (!email || !password) {
+      setErrorMessage('Please provide valid information')
+      return
+    }
+
     try {
       const response = await axios.post(
         'http://localhost:3000/api/v1/users/signin',
@@ -52,7 +57,10 @@ const SignInPage = () => {
             type="email"
             placeholder="Email"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) => {
+              setEmail(e.target.value)
+              setErrorMessage('')
+            }}
           />
         </div>
         <div className="mb-4">
@@ -61,7 +69,10 @@ const SignInPage = () => {
             type="password"
             placeholder="Password"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={(e) => {
+              setPassword(e.target.value)
+              setErrorMessage('')
+            }}
           />
         </div>
         <div className="flex justify-between items-center mb-4">
@@ -71,7 +82,9 @@ const SignInPage = () => {
               id="rememberMe"
               name="rememberMe"
               checked={rememberMe}
-              onChange={() => setRememberMe(!rememberMe)}
+              onChange={() => {
+                setRememberMe(!rememberMe)
+              }}
               className=" border-gray-300 text-blue-500"
             />
             <label htmlFor="rememberMe" className=" ml-1">
@@ -85,7 +98,6 @@ const SignInPage = () => {
         {errorMessage && <p className="text-red-500">{errorMessage}</p>}
         <button
           className="w-full py-2  bg-blue-500 text-white mb-4"
-          // disabled={isFormInvalid}
           onClick={handleSignIn}
         >
           Sign In
