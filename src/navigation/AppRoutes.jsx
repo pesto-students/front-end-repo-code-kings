@@ -30,7 +30,7 @@ const AppRouter = () => {
         <Route path="/routine/:id/add-exercises" Component={AddExercise} />
         <Route path="/routine/:id/save-routine" Component={SaveRoutine} />
         <Route path="/routine/:id/edit" Component={EditRoutine} />
-        <Route path="/editprofile" element={<EditProfile />} />
+        <Route path="setting/edit-profile" element={<EditProfile />} />
       </Routes>
     </Router>
   )

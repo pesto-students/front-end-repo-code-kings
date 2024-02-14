@@ -26,7 +26,7 @@ const HomeWithRoutines = () => {
         )
 
         setRoutines(response.data.data.data)
-        console.log(response.data.data.data)
+        console.log(response.data)
       } catch (err) {
         setError('Failed to fetch routine.')
         console.log(error)

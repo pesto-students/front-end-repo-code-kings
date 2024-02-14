@@ -4,13 +4,13 @@ const cookies = new Cookies()
 const token = cookies.get('jwt')
 const getUser = async () => {
   try {
-    const user = await axios.get('localhost:3000/api/v1/users/me', {
+    const user = await axios.get('http://localhost:3000/api/v1/users/me', {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     })
 
-    return user
+    return user.data.data.data
   } catch (error) {
     console.log(error)
   }

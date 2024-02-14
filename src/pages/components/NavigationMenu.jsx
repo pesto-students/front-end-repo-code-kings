@@ -66,8 +66,8 @@ const NavigationMenu = () => {
               <div>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  width="50"
-                  height="25"
+                  width="40"
+                  height="20"
                   viewBox="0 0 50 25"
                   fill="none"
                 >
@@ -87,8 +87,8 @@ const NavigationMenu = () => {
                 <Link to="/exercises">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    width="47"
-                    height="22"
+                    width="40"
+                    height="20"
                     viewBox="0 0 50 25"
                     fill="none"
                   >
@@ -240,7 +240,7 @@ const NavigationMenu = () => {
           )}
         </nav>
       </div>
-      {token && <AvatarAndName />}
+      {token && !isSettingsRoute && <AvatarAndName />}
     </div>
   )
 }
