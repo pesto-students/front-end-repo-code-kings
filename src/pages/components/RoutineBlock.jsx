@@ -1,28 +1,53 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 import OverlayFrame from './OverlayFrame'
+import { Cookies } from 'react-cookie'
+import axios from 'axios'
 
 const RoutineBlock = ({ routine }) => {
   const navigate = useNavigate()
+  const cookies = new Cookies()
+  const token = cookies.get('jwt')
 
   const [subMenuVisible, setSebMenuVisible] = useState(false)
   const [overLayVisible, setOverLayVisible] = useState(false)
   const [isIconSelected, setIcon] = useState(false)
   const [time, setTime] = useState(0)
+  const [exercises, setExercises] = useState([])
+  const [error, setError] = useState('')
+  const intervalId = useRef()
+
+  useEffect(() => {
+    const fetchRoutine = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:3000/api/v1/routines/${routine._id}`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          },
+        )
+        setExercises(response.data.data.data.exercises)
+        console.log(response.data.data.data)
+      } catch (error) {
+        setError('Failed to fetch routine.')
+      }
+    }
+    console.log(exercises)
+    fetchRoutine()
+  }, [routine._id, token])
 
   const startClock = () => {
-    const intervalId = setInterval(() => {
+    intervalId.current = setInterval(() => {
       setTime((prevTime) => prevTime + 1)
     }, 1000)
-
-    return () => {
-      clearInterval(intervalId)
-    }
   }
 
   const stopClock = () => {
-    setTime(time)
+    setTime(formatTime(time))
     setTime(0)
+    clearInterval(intervalId.current)
   }
 
   const formatTime = (seconds) => {
@@ -61,23 +86,37 @@ const RoutineBlock = ({ routine }) => {
     setIcon(true)
   }
 
+  const exerciseWeights = exercises.map((exe) => exe.weight)
+
+  const totalWeight = exerciseWeights.reduce((accumulator, currentWeight) => {
+    return accumulator + currentWeight
+  }, 0)
+
+  const handleFinishBtn = async () => {
+    stopClock()
+    try {
+      const response = await axios.post(
+        'http://localhost:3000/api/v1/workoutRecords/',
+        {
+          time: time,
+          weight: totalWeight,
+          routineId: routine._id,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        },
+      )
+      console.log(response.data)
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
   const exerciseNames = routine.exercises
     .map((exercise) => exercise.name)
     .join(',')
-
-  useEffect(() => {
-    let intervalId
-
-    if (overLayVisible) {
-      intervalId = startClock()
-    } else {
-      stopClock()
-    }
-
-    return () => {
-      clearInterval(intervalId)
-    }
-  }, [overLayVisible])
 
   return (
     <>
@@ -141,88 +180,91 @@ const RoutineBlock = ({ routine }) => {
           </div>
           <div className="w-full h-0.5 bg-neutral-500 mt-[2%]"></div>
           <div className="w-fit pl-7 pt-7 no-scrollbar overflow-y-auto text-center flex flex-col gap-8">
-            <div className="flex gap-5  items-center">
-              <div className="h-[60px] w-[60px] overflow-hidden rounded-full">
-                <img
-                  src="/Hip-Bridge.webp"
-                  alt="exerciseImage"
-                  className="h-full w-full object-cover "
-                />
-              </div>
-              <div className="w-fit font-[500] text-xl">Exercise Name</div>
-            </div>
-            <div className="text-neutral-400 text-center flex gap-11 text-2xl font-medium items-center">
-              <div className="w-fit">
-                <div>SET</div>
-                <input
-                  type="text"
-                  name="set"
-                  defaultValue={1}
-                  className="bg-transparent max-w-[25px] text-center text-white  focus:outline-none "
-                />
-              </div>
-              <div className="w-fit">
-                <div>KG</div>
-                <input
-                  type="text"
-                  name="kg"
-                  defaultValue={1}
-                  className="bg-transparent max-w-[25px] text-center text-white  focus:outline-none "
-                />
-              </div>
-              <div className="w-fit">
-                <div>REPS</div>
-                <input
-                  type="text"
-                  name="reps"
-                  defaultValue={1}
-                  className="bg-transparent max-w-[25px] text-center text-white  focus:outline-none "
-                />
-              </div>
-              <div onClick={handleCheckIcon}>
-                {isIconSelected ? (
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="50"
-                    height="50"
-                    viewBox="0 0 50 50"
-                    fill="none"
-                  >
-                    <rect width="50" height="50" fill="#22C55E" />
-                    <path
-                      d="M25 42C15.6 42 8 34.4 8 25C8 15.6 15.6 8 25 8C34.4 8 42 15.6 42 25C42 34.4 34.4 42 25 42ZM25 10C16.7 10 10 16.7 10 25C10 33.3 16.7 40 25 40C33.3 40 40 33.3 40 25C40 16.7 33.3 10 25 10Z"
-                      fill="#DCFCE7"
+            {exercises.map((exercise, index) => (
+              <div key={index}>
+                <div className="flex gap-5  items-center">
+                  <div className="w-fit font-[500] text-xl">
+                    {exercise.name}
+                  </div>
+                </div>
+                <div className="text-neutral-400 text-center flex gap-11 text-2xl font-medium items-center">
+                  <div className="w-fit">
+                    <div>SET</div>
+                    <input
+                      type="text"
+                      name="set"
+                      value={exercise.sets}
+                      defaultValue={1}
+                      className="bg-transparent max-w-[25px] text-center text-white  focus:outline-none "
                     />
-                    <path
-                      d="M23 32.3998L14.3 23.6998L15.7 22.2998L23 29.5998L34.3 18.2998L35.7001 19.6998L23 32.3998Z"
-                      fill="#DCFCE7"
+                  </div>
+                  <div className="w-fit">
+                    <div>KG</div>
+                    <input
+                      type="text"
+                      name="kg"
+                      value={exercise.weight}
+                      defaultValue={1}
+                      className="bg-transparent max-w-[25px] text-center text-white  focus:outline-none "
                     />
-                  </svg>
-                ) : (
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="40"
-                    height="40"
-                    viewBox="0 0 40 40"
-                    fill="none"
-                  >
-                    <path
-                      d="M20 33.5999C12.48 33.5999 6.40002 27.5199 6.40002 19.9999C6.40002 12.4799 12.48 6.3999 20 6.3999C27.52 6.3999 33.6 12.4799 33.6 19.9999C33.6 27.5199 27.52 33.5999 20 33.5999ZM20 7.9999C13.36 7.9999 8.00002 13.3599 8.00002 19.9999C8.00002 26.6399 13.36 31.9999 20 31.9999C26.64 31.9999 32 26.6399 32 19.9999C32 13.3599 26.64 7.9999 20 7.9999Z"
-                      fill="white"
+                  </div>
+                  <div className="w-fit">
+                    <div>REPS</div>
+                    <input
+                      type="text"
+                      name="reps"
+                      value={exercise.reps}
+                      defaultValue={1}
+                      className="bg-transparent max-w-[25px] text-center text-white  focus:outline-none "
                     />
-                    <path
-                      d="M18.4 25.9201L11.44 18.9601L12.56 17.8401L18.4 23.6801L27.44 14.6401L28.56 15.7601L18.4 25.9201Z"
-                      fill="white"
-                    />
-                  </svg>
-                )}
+                  </div>
+                  <div onClick={handleCheckIcon}>
+                    {isIconSelected ? (
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="50"
+                        height="50"
+                        viewBox="0 0 50 50"
+                        fill="none"
+                      >
+                        <rect width="50" height="50" fill="#22C55E" />
+                        <path
+                          d="M25 42C15.6 42 8 34.4 8 25C8 15.6 15.6 8 25 8C34.4 8 42 15.6 42 25C42 34.4 34.4 42 25 42ZM25 10C16.7 10 10 16.7 10 25C10 33.3 16.7 40 25 40C33.3 40 40 33.3 40 25C40 16.7 33.3 10 25 10Z"
+                          fill="#DCFCE7"
+                        />
+                        <path
+                          d="M23 32.3998L14.3 23.6998L15.7 22.2998L23 29.5998L34.3 18.2998L35.7001 19.6998L23 32.3998Z"
+                          fill="#DCFCE7"
+                        />
+                      </svg>
+                    ) : (
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="40"
+                        height="40"
+                        viewBox="0 0 40 40"
+                        fill="none"
+                      >
+                        <path
+                          d="M20 33.5999C12.48 33.5999 6.40002 27.5199 6.40002 19.9999C6.40002 12.4799 12.48 6.3999 20 6.3999C27.52 6.3999 33.6 12.4799 33.6 19.9999C33.6 27.5199 27.52 33.5999 20 33.5999ZM20 7.9999C13.36 7.9999 8.00002 13.3599 8.00002 19.9999C8.00002 26.6399 13.36 31.9999 20 31.9999C26.64 31.9999 32 26.6399 32 19.9999C32 13.3599 26.64 7.9999 20 7.9999Z"
+                          fill="white"
+                        />
+                        <path
+                          d="M18.4 25.9201L11.44 18.9601L12.56 17.8401L18.4 23.6801L27.44 14.6401L28.56 15.7601L18.4 25.9201Z"
+                          fill="white"
+                        />
+                      </svg>
+                    )}
+                  </div>
+                </div>
               </div>
-            </div>
+            ))}
           </div>
+          {error && <p className="text-red-500">{error}</p>}
           <div className="items-center mt-10 text-2xl">
             <button
               className="bg-blue-500 w-[90%]  h-[45px] mt-[2%]"
-              onClick={stopClock}
+              onClick={handleFinishBtn}
             >
               Finish
             </button>
