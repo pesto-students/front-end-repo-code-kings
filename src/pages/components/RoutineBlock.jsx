@@ -21,6 +21,7 @@ const RoutineBlock = ({ routine }) => {
   }
 
   const stopClock = () => {
+    setTime(time)
     setTime(0)
   }
 
@@ -42,7 +43,8 @@ const RoutineBlock = ({ routine }) => {
     navigate(`/routine/${routine._id}/edit`)
   }
 
-  const handleStartRoutineClick = () => {
+  const handleStartRoutineClick = (e) => {
+    e.stopPropagation()
     setOverLayVisible(true)
     startClock()
   }
@@ -218,9 +220,6 @@ const RoutineBlock = ({ routine }) => {
             </div>
           </div>
           <div className="items-center mt-10 text-2xl">
-            <button className="bg-neutral-800  w-[90%]  h-[45px] ">
-              + Add Set
-            </button>
             <button
               className="bg-blue-500 w-[90%]  h-[45px] mt-[2%]"
               onClick={stopClock}
