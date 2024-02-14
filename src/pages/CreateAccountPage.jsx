@@ -13,6 +13,11 @@ const CreateAccountPage = () => {
   const navigate = useNavigate()
 
   const handleSignUp = async () => {
+    if (!email || !password || !confirmPassword) {
+      setErrorMessage('Please provide valid information')
+      return
+    }
+
     if (password !== confirmPassword) {
       setErrorMessage("Passwords don't match")
       return
@@ -38,11 +43,9 @@ const CreateAccountPage = () => {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-black text-white">
-      <img
-        src="Energia.png"
-        alt="Energía Logo"
-        className="absolute top-8 left-8 m-2"
-      />
+      <div className="absolute top-8 w-[17.2%] h-[7.5%] left-8 m-2 object-cover">
+        <img src="Energia.png" alt="Energía Logo" />
+      </div>
 
       <div className="p-8 text-center">
         <p className="mb-6 tracking-wide font-bold text-2xl text-white-400">
@@ -55,7 +58,10 @@ const CreateAccountPage = () => {
             type="username"
             placeholder="Username"
             value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            onChange={(e) => {
+              setUsername(e.target.value)
+              setErrorMessage('')
+            }}
           />
         </div>
         <div className="mb-4">
@@ -64,7 +70,10 @@ const CreateAccountPage = () => {
             type="email"
             placeholder="Email"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) => {
+              setEmail(e.target.value)
+              setErrorMessage('')
+            }}
           />
         </div>
         <div className="mb-4">
@@ -73,7 +82,10 @@ const CreateAccountPage = () => {
             type="password"
             placeholder="Password"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={(e) => {
+              setPassword(e.target.value)
+              setErrorMessage('')
+            }}
           />
         </div>
         <div className="mb-4">
@@ -82,7 +94,10 @@ const CreateAccountPage = () => {
             type="password"
             placeholder="ConfirmPassword"
             value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
+            onChange={(e) => {
+              setConfirmPassword(e.target.value)
+              setErrorMessage('')
+            }}
           />
         </div>
         <p className="text-xs text-white-400 mb-4">
@@ -92,18 +107,14 @@ const CreateAccountPage = () => {
         {errorMessage && <p className="text-red-500">{errorMessage}</p>}
         <button
           className="w-60 py-2  bg-blue-500 text-white mb-4"
-          disabled={!email || !password}
           onClick={handleSignUp}
         >
           Agree & Join
         </button>
       </div>
-
-      <img
-        src="vector-design.svg"
-        alt="Your SVG Design"
-        className="absolute bottom-0 w-full h-auto"
-      />
+      <div className="absolute bottom-0 w-full h-auto">
+        <img src="vector-design.svg" alt="Your SVG Design" />
+      </div>
     </div>
   )
 }
