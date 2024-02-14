@@ -21,7 +21,7 @@ const BaseFrameLayout = ({ children }) => {
     useBasePath() === '/routine/:id/add-exercises'
   const isSaveRoutine = useBasePath() === `/routine/:id/save-routine`
   const isHomeWithRoutineRoute = location.pathname === '/home'
-  const isEditRoutine = location.pathname === '/routine/edit'
+  const isEditRoutine = useBasePath() === '/routine/:id/edit'
   const isSettingsRoute = location.pathname === '/setting'
 
   return (

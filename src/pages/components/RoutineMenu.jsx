@@ -20,7 +20,7 @@ const RoutineMenu = () => {
     useBasePath() === '/routine/:id/add-exercises'
   const isSaveRoutine = useBasePath() === `/routine/:id/save-routine`
   const isHomeWithRoutineRoute = location.pathname === '/home'
-  const isEditRoutine = location.pathname === '/routine/edit'
+  const isEditRoutine = useBasePath() === '/routine/:id/edit'
 
   const handleClick = () => {
     navigate('/newRoutine')
@@ -88,7 +88,7 @@ const RoutineMenu = () => {
           </div>
         </div>
       ) : isHomeWithRoutineRoute ? (
-        <div className="flex flex-col justify-evenly top-[15%] max-sm:left-[32%] fixed  gap-[30px] items-center md:left-[32%] ">
+        <div className="flex flex-col justify-evenly top-[15%] max-sm:left-[32%] fixed  gap-[30px] items-center w-[54.5%] md:left-[25.25%] right-[20.25%]">
           <div className="text-white text-4xl font-semibold  ">Routines</div>
           <div className="flex gap-32">
             <div
@@ -124,28 +124,6 @@ const RoutineMenu = () => {
                 </svg>
               </div>
               <div className="text-white font-normal text-2xl">New Routine</div>
-            </div>
-            <div className="h-200 w-200 bg-neutral-600  flex flex-col justify-center items-center cursor-pointer ">
-              <div className="relative w-16 h-16">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="50"
-                  height="50"
-                  viewBox="0 0 50 50"
-                  fill="none"
-                >
-                  <path
-                    d="M43.75 43.7499L34.7021 34.702M34.7021 34.702C36.2498 33.1543 37.4775 31.317 38.3151 29.2948C39.1527 27.2727 39.5838 25.1054 39.5838 22.9166C39.5838 20.7279 39.1527 18.5605 38.3151 16.5384C37.4775 14.5162 36.2498 12.6789 34.7021 11.1312C33.1544 9.58351 31.317 8.35582 29.2949 7.51822C27.2727 6.68062 25.1054 6.24951 22.9167 6.24951C20.7279 6.24951 18.5606 6.68062 16.5384 7.51822C14.5163 8.35582 12.6789 9.58351 11.1313 11.1312C8.00557 14.2569 6.24957 18.4962 6.24957 22.9166C6.24957 27.337 8.00557 31.5763 11.1313 34.702C14.2569 37.8277 18.4963 39.5837 22.9167 39.5837C27.3371 39.5837 31.5764 37.8277 34.7021 34.702Z"
-                    stroke="#60A5FA"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </div>
-              <div className="text-white font-normal text-2xl">
-                Explore Routine
-              </div>
             </div>
           </div>
         </div>
@@ -190,7 +168,7 @@ const RoutineMenu = () => {
           </div>
         </div>
       ) : (
-        <div className="flex flex-col justify-evenly top-[20%] max-sm:left-[32%] fixed  gap-[30px]  items-center md:left-[44%]">
+        <div className="flex flex-col justify-evenly top-[20%] fixed w-[54.5%] md:left-[25.25%] right-[20.25%]  gap-[30px]  items-center">
           <div className="text-white text-4xl font-semibold  ">Routines</div>
           <div
             className="h-200 w-200 bg-neutral-600  flex flex-col justify-center items-center  cursor-pointer"

@@ -49,7 +49,7 @@ const AvatarAndName = () => {
 
   return (
     <>
-      {isNewRoutineRoute || isNewRoutineWithExerciseRoute || isSaveRoutine ? (
+      {/* {isNewRoutineRoute || isNewRoutineWithExerciseRoute || isSaveRoutine ? (
         <div
           className="max-sm:mr-[2%] max-sm:right-[1%] flex absolute md:right-[41%] top-[1%] items-center w-fit gap-5 cursor-pointer"
           onClick={handleClick}
@@ -77,21 +77,21 @@ const AvatarAndName = () => {
             />
           </div>
         </div>
-      ) : (
-        <div
-          className="max-sm:mr-[2%] max-sm:right-[1%] flex absolute md:right-[21%] top-[1%] items-center w-fit gap-5 cursor-pointer"
-          onClick={handleClick}
-        >
-          <div className="max-min:hidden lg:text-2xl">{user.name}</div>
-          <div className="avatar w-[50px]  h-[50px] rounded-full  overflow-hidden border-white">
-            <img
-              src={image}
-              className="h-[100%] w-[100%] object-cover"
-              alt="profile logo"
-            />
-          </div>
+      ) : ( */}
+      <div
+        className="max-sm:mr-[2%] max-sm:right-[1%] flex absolute md:left-[27%] top-[1%] items-center w-fit gap-5 cursor-pointer"
+        onClick={handleClick}
+      >
+        <div className="avatar w-[50px]  h-[50px] rounded-full  overflow-hidden border-white">
+          <img
+            src={image}
+            className="h-[100%] w-[100%] object-cover"
+            alt="profile logo"
+          />
         </div>
-      )}
+        <div className="max-min:hidden lg:text-2xl">{user.name}</div>
+      </div>
+      {/* )} */}
     </>
   )
 }
