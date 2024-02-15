@@ -22,9 +22,6 @@ const SignInPage = () => {
           email: email,
           password: password,
         },
-        {
-          withCredentials: true,
-        },
       )
       localStorage.setItem('isLogin', true)
       console.log(response.data)
