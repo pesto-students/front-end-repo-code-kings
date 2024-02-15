@@ -50,7 +50,7 @@ const EditProfile = () => {
 
     try {
       await axios.patch(
-        `https://energia-app.vercel.app/api/v1/users/updateMe`,
+        `https://energia-backend.onrender.com/api/v1/users/updateMe`,
         {
           name: formData.name,
           email: user.email,

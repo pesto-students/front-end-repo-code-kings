@@ -20,7 +20,7 @@ const SaveRoutine = () => {
     const fetchRoutine = async () => {
       try {
         const response = await axios.get(
-          `https://energia-app.vercel.app/api/v1/routines/${id}`,
+          `https://energia-backend.onrender.com/api/v1/routines/${id}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -45,7 +45,7 @@ const SaveRoutine = () => {
     exercises.map(async (exercise) => {
       try {
         await axios.patch(
-          `https://energia-app.vercel.app/api/v1/exercises/${exercise._id}`,
+          `https://energia-backend.onrender.com/api/v1/exercises/${exercise._id}`,
           {
             name: exercise.name,
             sets: exercise.sets,
