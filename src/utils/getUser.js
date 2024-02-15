@@ -4,11 +4,14 @@ const cookies = new Cookies()
 const token = cookies.get('jwt')
 const getUser = async () => {
   try {
-    const user = await axios.get('http://localhost:3000/api/v1/users/me', {
-      headers: {
-        Authorization: `Bearer ${token}`,
+    const user = await axios.get(
+      'https://energia-app.vercel.app/api/v1/users/me',
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       },
-    })
+    )
 
     return user.data.data.data
   } catch (error) {

@@ -25,7 +25,7 @@ const CreateAccountPage = () => {
 
     try {
       const response = await axios.post(
-        'http://localhost:3000/api/v1/users/signup',
+        'https://energia-app.vercel.app/api/v1/users/signup',
         {
           name: username,
           email: email,
