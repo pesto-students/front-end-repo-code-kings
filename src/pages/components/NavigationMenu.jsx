@@ -1,11 +1,12 @@
 import React from 'react'
 import { Cookies } from 'react-cookie'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import AvatarAndName from './AvatarAndName'
 import Logo from './Logo'
 
 const NavigationMenu = () => {
   const location = useLocation()
+  const navigate = useNavigate()
   const cookie = new Cookies()
   const token = cookie.get('jwt')
   const isHomePage = location.pathname === '/'
@@ -13,6 +14,10 @@ const NavigationMenu = () => {
   const isProfileRoute = location.pathname === '/profile'
   const isSettingsRoute = location.pathname === '/setting'
   const isEditProfileRoute = location.pathname === '/setting/edit-profile'
+
+  if (!token) {
+    navigate('/')
+  }
 
   return (
     <div className="text-white">
