@@ -23,6 +23,7 @@ const BaseFrameLayout = ({ children }) => {
   const isHomeWithRoutineRoute = location.pathname === '/home'
   const isEditRoutine = useBasePath() === '/routine/:id/edit'
   const isSettingsRoute = location.pathname === '/setting'
+  const isEditProfileRoute = location.pathname === '/setting/edit-profile'
 
   return (
     <div className="items-center">
@@ -40,7 +41,7 @@ const BaseFrameLayout = ({ children }) => {
           <div className="max-sm:w-full h-0.5 bg-neutral-500  fixed bottom-[46%] w-[55%] lg:left-[25%] md:left-[25%]"></div>
           <div className="w-0.5 h-full bg-neutral-500 absolute max-sm:hidden right-[20%]"></div>
         </>
-      ) : isEditRoutine ? (
+      ) : isEditRoutine || isEditProfileRoute ? (
         <>
           <div className="max-sm:w-full h-0.5 bg-neutral-500 absolute top-[8%] w-[40.5%] lg:left-[25%] md:left-[25%]"></div>
           <div className="max-sm:w-full h-0.5 bg-neutral-500  fixed bottom-[46%] w-[40.5%] lg:left-[25%] md:left-[25%]"></div>

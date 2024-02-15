@@ -12,6 +12,7 @@ const NavigationMenu = () => {
   const isExercisesRoute = location.pathname === '/exercises'
   const isProfileRoute = location.pathname === '/profile'
   const isSettingsRoute = location.pathname === '/setting'
+  const isEditProfileRoute = location.pathname === '/setting/edit-profile'
 
   return (
     <div className="text-white">
@@ -240,7 +241,7 @@ const NavigationMenu = () => {
           )}
         </nav>
       </div>
-      {token && !isSettingsRoute && <AvatarAndName />}
+      {token && !isSettingsRoute && !isEditProfileRoute && <AvatarAndName />}
     </div>
   )
 }

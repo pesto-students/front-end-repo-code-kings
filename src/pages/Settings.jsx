@@ -1,9 +1,17 @@
 import React from 'react'
 import BaseFrameLayout from './components/Baseframe'
 import NavigationMenu from './components/NavigationMenu'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { Cookies } from 'react-cookie'
 
 const Settings = () => {
+  const navigate = useNavigate()
+  const cookie = new Cookies()
+  const handleLogout = () => {
+    cookie.remove('jwt')
+    navigate('/signin')
+  }
+
   return (
     <BaseFrameLayout>
       <NavigationMenu />
@@ -138,7 +146,12 @@ const Settings = () => {
         </div>
         {/* Logout */}
         <div className="mt-6 ">
-          <div className="text-3xl text-center  text-red-500">Logout</div>
+          <div
+            className="text-3xl text-center  text-red-500 cursor-pointer"
+            onClick={handleLogout}
+          >
+            Logout
+          </div>
           <div className="h-0.5 w-full bg-neutral-500 mt-6"></div>
         </div>
       </div>
