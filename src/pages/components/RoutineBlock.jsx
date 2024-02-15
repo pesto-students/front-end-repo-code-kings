@@ -21,7 +21,7 @@ const RoutineBlock = ({ routine }) => {
     const fetchRoutine = async () => {
       try {
         const response = await axios.get(
-          `https://energia-app.vercel.app/api/v1/routines/${routine._id}`,
+          `https://energia-backend.onrender.com/api/v1/routines/${routine._id}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -71,7 +71,7 @@ const RoutineBlock = ({ routine }) => {
   const handleDeleteRoutine = async () => {
     try {
       const response = await axios.delete(
-        `https://energia-app.vercel.app/api/v1/routines/${routine._id}`,
+        `https://energia-backend.onrender.com/api/v1/routines/${routine._id}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -113,7 +113,7 @@ const RoutineBlock = ({ routine }) => {
     stopClock()
     try {
       const response = await axios.post(
-        'https://energia-app.vercel.app/api/v1/workoutRecords/',
+        'https://energia-backend.onrender.com/api/v1/workoutRecords/',
         {
           time: time,
           weight: totalWeight,

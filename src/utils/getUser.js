@@ -5,7 +5,7 @@ const token = cookies.get('jwt')
 const getUser = async () => {
   try {
     const user = await axios.get(
-      'https://energia-app.vercel.app/api/v1/users/me',
+      'https://energia-backend.onrender.com/api/v1/users/me',
       {
         headers: {
           Authorization: `Bearer ${token}`,

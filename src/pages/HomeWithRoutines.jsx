@@ -17,7 +17,7 @@ const HomeWithRoutines = () => {
     const fetchRoutine = async () => {
       try {
         const response = await axios.get(
-          `https://energia-app.vercel.app/api/v1/routines/`,
+          `https://energia-backend.onrender.com/api/v1/routines/`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
