@@ -1,10 +1,39 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import BaseFrameLayout from './components/Baseframe'
 import NavigationMenu from './components/NavigationMenu'
 import ExerciseBlock from './components/ExerciseBlock'
 import SearchBar from './components/SearchBar'
+import axios from 'axios'
+import { Cookies } from 'react-cookie'
 
 const Exercises = () => {
+  const cookie = new Cookies()
+  const token = cookie.get('jwt')
+  const [exercises, setExercises] = useState([])
+
+  const fetchExercises = async () => {
+    try {
+      const options = {
+        method: 'GET',
+        url: 'https://exercisedb.p.rapidapi.com/exercises',
+        params: { limit: '10' },
+        headers: {
+          'X-RapidAPI-Key':
+            'ef5ccd128bmshf4e1c4669cb9da9p143462jsn83074d878f23',
+          'X-RapidAPI-Host': 'exercisedb.p.rapidapi.com',
+        },
+      }
+      const response = await axios.request(options)
+      setExercises(response.data)
+      console.log(response.data)
+    } catch (error) {
+      console.error('Error fetching exercises:', error)
+    }
+  }
+  useEffect(() => {
+    fetchExercises()
+  }, [token])
+
   return (
     <BaseFrameLayout>
       <NavigationMenu />
@@ -17,14 +46,9 @@ const Exercises = () => {
         <div className=" text-white  mt-[4%] pt-[0.5%] text-center flex flex-col items-center gap-10 overflow-hidden">
           <SearchBar />
           <div className="w-[90%] max-h-[565px] no-scrollbar overflow-y-auto text-center">
-            <ExerciseBlock />
-            <ExerciseBlock />
-            <ExerciseBlock />
-            <ExerciseBlock />
-            <ExerciseBlock />
-            <ExerciseBlock />
-            <ExerciseBlock />
-            <ExerciseBlock />
+            {exercises.map((exercise, index) => (
+              <ExerciseBlock key={index} exercise={exercise} />
+            ))}
           </div>
         </div>
       </div>
