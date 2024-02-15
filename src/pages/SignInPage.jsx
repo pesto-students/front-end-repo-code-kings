@@ -38,11 +38,13 @@ const SignInPage = () => {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-black text-white">
       {/* Your logo at the top-left corner */}
-      <img
-        src="Energia.png"
-        alt="Energía Logo"
-        className="absolute top-8 left-8 m-2"
-      />
+      <Link to="/">
+        <img
+          src="Energia.png"
+          alt="Energía Logo"
+          className="absolute top-8 left-8 m-2"
+        />
+      </Link>
 
       <div className="p-10 text-center">
         <h2 className="text-5xl mb-8">Sign in</h2>

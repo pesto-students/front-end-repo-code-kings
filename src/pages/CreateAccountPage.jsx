@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import Cookies from 'universal-cookie'
 
 const CreateAccountPage = () => {
@@ -43,9 +43,11 @@ const CreateAccountPage = () => {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-black text-white">
-      <div className="absolute top-8 w-[17.2%] h-[7.5%] left-8 m-2 object-cover">
-        <img src="Energia.png" alt="Energía Logo" />
-      </div>
+      <Link to="/">
+        <div className="absolute top-8 w-[17.2%] h-[7.5%] left-8 m-2 object-cover">
+          <img src="Energia.png" alt="Energía Logo" />
+        </div>
+      </Link>
 
       <div className="p-8 text-center">
         <p className="mb-6 tracking-wide font-bold text-2xl text-white-400">

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 
 const ForgotPasswordPage = () => {
@@ -39,11 +39,13 @@ const ForgotPasswordPage = () => {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-black text-white">
-      <img
-        src="Energia.png"
-        alt="Energía Logo"
-        className="absolute top-8 left-8 m-2"
-      />
+      <Link to="/">
+        <img
+          src="Energia.png"
+          alt="Energía Logo"
+          className="absolute top-8 left-8 m-2"
+        />
+      </Link>
 
       <div className="p-8 text-center">
         <h2 className="text-5xl mb-8">Forgot Password</h2>
