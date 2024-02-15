@@ -68,6 +68,23 @@ const RoutineBlock = ({ routine }) => {
     navigate(`/routine/${routine._id}/edit`)
   }
 
+  const handleDeleteRoutine = async () => {
+    try {
+      const response = await axios.delete(
+        `http://localhost:3000/api/v1/routines/${routine._id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        },
+      )
+      console.log(response.data)
+      setSebMenuVisible(!subMenuVisible)
+    } catch (error) {
+      setError('Failed to fetch routine.')
+    }
+  }
+
   const handleStartRoutineClick = (e) => {
     e.stopPropagation()
     setOverLayVisible(true)
@@ -159,7 +176,12 @@ const RoutineBlock = ({ routine }) => {
             Edit Routine
           </div>
           <div className="w-full h-0.5 bg-neutral-500"></div>
-          <div className="text-red-500 my-4 cursor-pointer">Delete Routine</div>
+          <div
+            className="text-red-500 my-4 cursor-pointer"
+            onClick={handleDeleteRoutine}
+          >
+            Delete Routine
+          </div>
           <div className="w-full h-0.5 bg-neutral-500"></div>
           <div
             className="text-red-500 my-2.5 cursor-pointer"

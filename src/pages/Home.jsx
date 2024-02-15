@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom'
 import BaseFrameLayout from './components/Baseframe'
 import NavigationMenu from './components/NavigationMenu'
 import RoutineMenu from './components/RoutineMenu'
+import axios from 'axios'
+import { useEffect } from 'react'
 
 const Home = () => {
   const navigate = useNavigate()
@@ -15,6 +17,30 @@ const Home = () => {
   const handleSignUp = () => {
     navigate('/signup')
   }
+
+  useEffect(() => {
+    const fetchRoutine = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:3000/api/v1/routines/`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          },
+        )
+        const length = response.data.results
+        console.log(response.data.results)
+        if (length > 0) {
+          navigate('/home')
+        }
+      } catch (err) {
+        console.error(err)
+      }
+    }
+
+    fetchRoutine()
+  }, [token])
 
   return (
     <BaseFrameLayout>

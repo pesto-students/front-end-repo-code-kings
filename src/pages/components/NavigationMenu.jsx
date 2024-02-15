@@ -9,7 +9,7 @@ const NavigationMenu = () => {
   const navigate = useNavigate()
   const cookie = new Cookies()
   const token = cookie.get('jwt')
-  const isHomePage = location.pathname === '/'
+  const isHomePage = location.pathname === '/' || '/home'
   const isExercisesRoute = location.pathname === '/exercises'
   const isProfileRoute = location.pathname === '/profile'
   const isSettingsRoute = location.pathname === '/setting'

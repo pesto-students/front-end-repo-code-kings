@@ -4,9 +4,7 @@ import { useNavigate } from 'react-router-dom'
 
 const Logo = () => {
   const navigate = useNavigate()
-  const cookie = new Cookies()
   const handleClick = () => {
-    cookie.remove('jwt')
     navigate('/signin')
   }
   return (
