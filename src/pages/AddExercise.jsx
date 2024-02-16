@@ -27,7 +27,7 @@ const AddExercise = () => {
 
     try {
       const response = await axios.post(
-        `http://localhost:3000/api/v1/routines/${routineId}/exercises`,
+        `https://energia-backend.onrender.com/api/v1/routines/${routineId}/exercises`,
         {
           name: exerciseName,
           sets: sets,

@@ -22,7 +22,7 @@ const ForgotPasswordPage = () => {
 
     try {
       const response = await axios.post(
-        'http://localhost:3000/api/v1/users/forgotPassword',
+        'https://energia-backend.onrender.com/api/v1/users/forgotPassword',
         {
           email: email,
           password: newPassword,

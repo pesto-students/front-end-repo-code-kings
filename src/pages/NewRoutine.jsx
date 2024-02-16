@@ -37,7 +37,7 @@ const NewRoutine = () => {
     } else {
       try {
         const response = await axios.post(
-          'http://localhost:3000/api/v1/routines/',
+          'https://energia-backend.onrender.com/api/v1/routines/',
           {
             name: routineName,
           },
