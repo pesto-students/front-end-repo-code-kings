@@ -30,7 +30,7 @@ const CreateAccountPage = () => {
           name: username,
           email: email,
           password: password,
-          passwordConfirm: confirmPassword,
+          confirmPassword: confirmPassword,
         },
       )
       console.log(response.data)
@@ -114,9 +114,12 @@ const CreateAccountPage = () => {
           Agree & Join
         </button>
       </div>
-      <div className="absolute bottom-0 w-full h-auto">
-        <img src="vector-design.svg" alt="Your SVG Design" />
-      </div>
+
+      <img
+        src="vector-design.svg"
+        alt="Your SVG Design"
+        className="absolute bottom-0 w-full h-auto"
+      />
     </div>
   )
 }
