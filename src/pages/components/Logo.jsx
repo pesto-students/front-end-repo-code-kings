@@ -1,11 +1,10 @@
 import React from 'react'
-import { Cookies } from 'react-cookie'
 import { useNavigate } from 'react-router-dom'
 
 const Logo = () => {
   const navigate = useNavigate()
   const handleClick = () => {
-    navigate('/signin')
+    navigate('/')
   }
   return (
     <div className="w-full h-[8%] max-sm:absolute text-white max-sm:flex max-sm:justify-between items-center">

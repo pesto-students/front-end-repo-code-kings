@@ -14,20 +14,13 @@ export const useBasePath = () => {
 
 const AvatarAndName = () => {
   const navigate = useNavigate()
-  const location = useLocation()
-
-  const isNewRoutineRoute = location.pathname === '/newRoutine'
-  const isNewRoutineWithExerciseRoute =
-    useBasePath() === `/routine/:id/add-exercises`
-  const isSaveRoutine = useBasePath() === `/routine/:id/save-routine`
-  const isEditRoutine = useBasePath() === '/routine/:id/edit'
 
   const [user, setUser] = useState('')
 
   const handleClick = () => {
     navigate('/profile')
   }
-  let image
+  let image = `https://ui-avatars.com/api/?name=${user.name}&background=random&length=1`
   useEffect(() => {
     const fetchUser = async () => {
       try {
@@ -49,35 +42,6 @@ const AvatarAndName = () => {
 
   return (
     <>
-      {/* {isNewRoutineRoute || isNewRoutineWithExerciseRoute || isSaveRoutine ? (
-        <div
-          className="max-sm:mr-[2%] max-sm:right-[1%] flex absolute md:right-[41%] top-[1%] items-center w-fit gap-5 cursor-pointer"
-          onClick={handleClick}
-        >
-          <div className="max-min:hidden lg:text-2xl">{user.name}</div>
-          <div className="avatar w-[50px]  h-[50px] rounded-full  overflow-hidden border-white">
-            <img
-              src={image}
-              className="h-[100%] w-[100%] object-cover"
-              alt="profile logo"
-            />
-          </div>
-        </div>
-      ) : isEditRoutine ? (
-        <div
-          className="max-sm:mr-[2%] max-sm:right-[1%] flex absolute md:right-[36%] top-[1%] items-center w-fit gap-5 cursor-pointer"
-          onClick={handleClick}
-        >
-          <div className="max-min:hidden lg:text-2xl">{user.name}</div>
-          <div className="avatar w-[50px]  h-[50px] rounded-full  overflow-hidden border-white">
-            <img
-              src={image}
-              className="h-[100%] w-[100%] object-cover"
-              alt="profile logo"
-            />
-          </div>
-        </div>
-      ) : ( */}
       <div
         className="max-sm:mr-[2%] max-sm:right-[1%] flex absolute md:left-[27%] top-[1%] items-center w-fit gap-5 cursor-pointer"
         onClick={handleClick}
@@ -91,7 +55,6 @@ const AvatarAndName = () => {
         </div>
         <div className="max-min:hidden lg:text-2xl">{user.name}</div>
       </div>
-      {/* )} */}
     </>
   )
 }
