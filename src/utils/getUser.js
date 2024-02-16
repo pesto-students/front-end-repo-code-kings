@@ -2,6 +2,7 @@ import axios from 'axios'
 import { Cookies } from 'react-cookie'
 const cookies = new Cookies()
 const token = cookies.get('jwt')
+// console.log(token)
 const getUser = async () => {
   try {
     const user = await axios.get(

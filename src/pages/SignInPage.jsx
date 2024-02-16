@@ -1,5 +1,6 @@
 import axios from 'axios'
 import React, { useState } from 'react'
+import { Cookies } from 'react-cookie'
 import { Link, useNavigate } from 'react-router-dom'
 
 const SignInPage = () => {
@@ -8,7 +9,7 @@ const SignInPage = () => {
   const [rememberMe, setRememberMe] = useState(false)
   const [errorMessage, setErrorMessage] = useState('')
   const navigate = useNavigate()
-
+  const cookie = new Cookies()
   const handleSignIn = async () => {
     if (!email || !password) {
       setErrorMessage('Please provide valid information')
@@ -25,6 +26,7 @@ const SignInPage = () => {
       )
       localStorage.setItem('isLogin', true)
       console.log(response.data)
+      cookie.set('jwt', response.data.token)
       navigate('/')
     } catch (error) {
       console.error(error)
