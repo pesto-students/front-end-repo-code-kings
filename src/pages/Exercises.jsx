@@ -40,7 +40,7 @@ const Exercises = () => {
       <div className="top-[8%] left-[25.25%] right-[20.25%] absolute">
         <div className="new-routine text-white   text-center">
           <h1 className="text-2xl font-semibold leading-[20px] pt-[4.5%] text-center">
-            Add Exercise
+            Exercise Info
           </h1>
         </div>
         <div className=" text-white  mt-[4%] pt-[0.5%] text-center flex flex-col items-center gap-10 overflow-hidden">
