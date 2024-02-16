@@ -12,7 +12,6 @@ const NewRoutine = () => {
   const navigate = useNavigate()
   const cookie = new Cookies()
   const token = cookie.get('jwt')
-
   useEffect(() => {
     if (!token) {
       navigate('/signin')
@@ -45,7 +44,6 @@ const NewRoutine = () => {
             headers: {
               Authorization: `Bearer ${token}`,
             },
-            withCredentials: true,
           },
         )
         const routineId = response.data.data.data.id
