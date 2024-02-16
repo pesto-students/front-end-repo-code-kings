@@ -63,7 +63,7 @@ const AddExercise = () => {
             type="text"
             value={exerciseName}
             placeholder="Exercise Name"
-            className="bg-transparent border-neutral-700 border-2 text-neutral-400 w-[90%] pl-3 text-2xl"
+            className="bg-transparent border-neutral-700 border-2 text-neutral-400 w-[90%] pl-3 text-2xl mx-auto"
             onChange={(e) => {
               setErrorMessage('')
               setExerciseName(e.target.value)
