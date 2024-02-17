@@ -16,7 +16,7 @@ const Exercises = () => {
       const options = {
         method: 'GET',
         url: 'https://exercisedb.p.rapidapi.com/exercises',
-        params: { limit: '10' },
+        params: { limit: '30' },
         headers: {
           'X-RapidAPI-Key':
             'ef5ccd128bmshf4e1c4669cb9da9p143462jsn83074d878f23',
@@ -25,7 +25,6 @@ const Exercises = () => {
       }
       const response = await axios.request(options)
       setExercises(response.data)
-      console.log(response.data)
     } catch (error) {
       console.error('Error fetching exercises:', error)
     }
@@ -44,8 +43,7 @@ const Exercises = () => {
           </h1>
         </div>
         <div className=" text-white  mt-[4%] pt-[0.5%] text-center flex flex-col items-center gap-10 overflow-hidden">
-          <SearchBar />
-          <div className="w-[90%] max-h-[565px] no-scrollbar overflow-y-auto text-center">
+          <div className="w-[90%] max-h-[715px] no-scrollbar overflow-y-auto text-center">
             {exercises.map((exercise, index) => (
               <ExerciseBlock key={index} exercise={exercise} />
             ))}
