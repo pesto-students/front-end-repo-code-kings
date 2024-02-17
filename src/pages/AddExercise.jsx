@@ -107,9 +107,6 @@ const AddExercise = () => {
         </div>
         {error && <p className="text-red-500">{error}</p>}
         <div className="w-[90%]">
-          <button className="bg-neutral-600  w-[90%] text-xl h-[45px] ">
-            + Add Set
-          </button>
           <button
             className="bg-blue-500 w-[90%] text-xl h-[45px] mt-[2%]"
             onClick={handleCreateExercise}

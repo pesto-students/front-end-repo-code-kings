@@ -1,70 +1,55 @@
-# Getting Started with Create React App
+ Workout Tracker Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a workout tracking application built using ReactJS, JavaScript, and Tailwind CSS. It allows users to log their workouts, create routines, track exercises, and monitor sets, weights, and reps. The backend functionality is supported by a Node.js API.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- *Routine Creation*: Users can create customized workout routines tailored to their fitness goals.
+- *Exercise Tracking*: Track various exercises within each routine, including sets, weights, and reps.
+- *Set Monitoring*: Easily monitor progress by recording sets, weights, and repetitions for each exercise.
+- *Node.js API Integration*: Utilizes a Node.js API on the backend to fetch data and provide functionality.
 
-### `npm start`
+## Installation
 
-Runs the app in the development mode.\
-Open [https://energia-backend.onrender.com](https://energia-backend.onrender.com) to view it in your browser.
+To run the application locally, follow these steps:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+To run the application locally, follow these steps:
 
-### `npm test`
+1. Clone this repository to your local machine.
+2. Navigate to the project directory in your terminal.
+3. Install dependencies by running:
+ Access the application in your web browser at http://localhost:3000.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Technologies Used
 
-### `npm run build`
+- *ReactJS*: Frontend library for building user interfaces.
+- *JavaScript*: Programming language used for frontend logic.
+- *Tailwind CSS*: Utility-first CSS framework for styling.
+- *Node.js*: Backend environment for running the API.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Usage
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. *Creating a Routine*: Navigate to the "Create Routine" section and input the details of your new routine, including exercises and sets.
+2. *Tracking Exercises*: In the "Track Exercise" section, select a routine to start logging your workout. Input the sets, weights, and reps for each exercise.
+3. *Viewing Progress*: Monitor your progress over time by reviewing past workouts and comparing results.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Contributing
+Contributions are welcome! If you'd like to contribute to this project, please follow these steps:
 
-### `npm run eject`
+1. Fork the repository.
+2. Create a new branch (git checkout -b feature/your-feature-name).
+3. Make your changes and commit them (git commit -am 'Add new feature').
+4. Push your changes to your branch (git push origin feature/your-feature-name).
+5. Create a pull request explaining your changes.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## License
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Acknowledgements
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- The developers of ReactJS, JavaScript, and Tailwind CSS.
+- Node.js community for providing the backend environment.
+- Any other resources or libraries used in this project
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Thank you for using Workout Tracker Application! 🏋‍♂💪

@@ -92,6 +92,8 @@ const RoutineBlock = ({ routine }) => {
   }
 
   const handleClickOutside = (event) => {
+    event.stopPropagation()
+    event.preventDefault()
     if (!event.target.closest('.your-overlay-content-class')) {
       setOverLayVisible(false)
     }
@@ -112,6 +114,26 @@ const RoutineBlock = ({ routine }) => {
   const handleFinishBtn = async () => {
     stopClock()
     try {
+      exercises.map(async (exercise) => {
+        try {
+          await axios.patch(
+            `https://energia-backend.onrender.com/api/v1/exercises/${exercise._id}`,
+            {
+              name: exercise.name,
+              sets: exercise.sets,
+              reps: exercise.reps,
+              weight: exercise.weight,
+            },
+            {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            },
+          )
+        } catch (error) {
+          console.error(error)
+        }
+      })
       const response = await axios.post(
         'https://energia-backend.onrender.com/api/v1/workoutRecords/',
         {
@@ -126,6 +148,7 @@ const RoutineBlock = ({ routine }) => {
         },
       )
       console.log(response.data)
+      setOverLayVisible(false)
     } catch (error) {
       console.error(error)
     }
@@ -192,7 +215,12 @@ const RoutineBlock = ({ routine }) => {
         </div>
       )}
       <OverlayFrame onClose={handleClickOutside} visible={overLayVisible}>
-        <div className="bg-neutral-900 w-[40%] h-[70%] text-white text-center z-10">
+        <div
+          className="bg-neutral-900 w-[40%] h-[70%] text-white text-center z-10"
+          onClick={(e) => {
+            e.stopPropagation()
+          }}
+        >
           <div className="flex justify-between items-center mt-[2%]">
             <div className="w-fit text-2xl font-medium pl-8">Log Workout</div>
             <div className="flex flex-col items-center pr-16">
@@ -217,6 +245,13 @@ const RoutineBlock = ({ routine }) => {
                       name="set"
                       value={exercise.sets}
                       defaultValue={1}
+                      onChange={(e) =>
+                        setExercises([
+                          ...exercises.slice(0, index),
+                          { ...exercise, sets: e.target.value },
+                          ...exercises.slice(index + 1),
+                        ])
+                      }
                       className="bg-transparent max-w-[25px] text-center text-white  focus:outline-none "
                     />
                   </div>
@@ -227,6 +262,13 @@ const RoutineBlock = ({ routine }) => {
                       name="kg"
                       value={exercise.weight}
                       defaultValue={1}
+                      onChange={(e) =>
+                        setExercises([
+                          ...exercises.slice(0, index),
+                          { ...exercise, weight: e.target.value },
+                          ...exercises.slice(index + 1),
+                        ])
+                      }
                       className="bg-transparent max-w-[25px] text-center text-white  focus:outline-none "
                     />
                   </div>
@@ -237,6 +279,13 @@ const RoutineBlock = ({ routine }) => {
                       name="reps"
                       value={exercise.reps}
                       defaultValue={1}
+                      onChange={(e) =>
+                        setExercises([
+                          ...exercises.slice(0, index),
+                          { ...exercise, reps: e.target.value },
+                          ...exercises.slice(index + 1),
+                        ])
+                      }
                       className="bg-transparent max-w-[25px] text-center text-white  focus:outline-none "
                     />
                   </div>

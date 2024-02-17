@@ -47,7 +47,6 @@ const EditProfile = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-
     try {
       await axios.patch(
         `https://energia-backend.onrender.com/api/v1/users/updateMe`,
