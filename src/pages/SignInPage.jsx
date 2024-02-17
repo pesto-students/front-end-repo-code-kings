@@ -6,7 +6,6 @@ import { Link, useNavigate } from 'react-router-dom'
 const SignInPage = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [rememberMe, setRememberMe] = useState(false)
   const [errorMessage, setErrorMessage] = useState('')
   const navigate = useNavigate()
   const cookie = new Cookies()
@@ -77,21 +76,7 @@ const SignInPage = () => {
           />
         </div>
         <div className="flex justify-between items-center mb-4">
-          <div className="flex items-center">
-            <input
-              type="checkbox"
-              id="rememberMe"
-              name="rememberMe"
-              checked={rememberMe}
-              onChange={() => {
-                setRememberMe(!rememberMe)
-              }}
-              className=" border-gray-300 text-blue-500"
-            />
-            <label htmlFor="rememberMe" className=" ml-1">
-              Remember me
-            </label>
-          </div>
+          <div className="flex items-center"></div>
           <Link to="/forgot-password" className="text-blue-500">
             Forgot password?
           </Link>
